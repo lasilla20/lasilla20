@@ -3,7 +3,8 @@
 남들깃허브할때 쫌 많이 놀앗긴 하지만 꾸미는거하나는 기가막히게잘합니다. 기다려보슈
 
 [![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=lasilla20)](https://github.com/anuraghazra/github-readme-stats)
-</div>
+
+
 [![Gmail Badge](https://img.shields.io/badge/Gmail-d14836?style=flat-square&logo=Gmail&logoColor=white&link=mailto:lasilla2096@gmail.com)](mailto:lasilla2096@gmail.com)
 
 ##

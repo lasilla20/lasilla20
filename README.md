@@ -6,7 +6,7 @@ WELECOME TO ``정차미``'s GITHUB PAGE!👋
 
 
 
-🔥 **I'm Working on ···**
+🔥 **I'm working on ···**
 
 [![Gmail Badge](https://img.shields.io/badge/Gmail-d14836?style=flat-square&logo=Gmail&logoColor=white&link=mailto:lasilla2096@gmail.com)](mailto:lasilla2096@gmail.com)
 

@@ -35,7 +35,7 @@
 
 📬 **Other Contacts ···** 
 <br><br>
-[![dis](img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)](mailto:lasilla2096@gmail.com)
+[![dis](img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white&link=mailto:lasilla2096@gmail.com)](mailto:lasilla2096@gmail.com)
 [![Gmail Badge](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white&link=mailto:lasilla2096@gmail.com)](mailto:lasilla2096@gmail.com)
 
 

@@ -1,4 +1,4 @@
-WELECOME TO ``정차미``'s GITHUB PAGE!
+WELECOME TO ``정차미``'s GITHUB PAGE!👋
 ======
 
 

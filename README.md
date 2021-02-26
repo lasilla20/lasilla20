@@ -22,7 +22,7 @@
 
 
 🔥 **I'm working on ···**
-| Date | Stutdy name | Link |
+| Date | Study name | Link |
 | --- | --- | :---: |
 | 2020-07 ~ 2020-12 | BOJ Algorithm problem Solving 1 | § |
 | 2021-01-14 ~ | BOJ Algorithm problem Solving 2 | § |

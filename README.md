@@ -2,7 +2,7 @@ WELECOME TO ``정차미``'s GITHUB PAGE!👋
 ======
 
 
-my github grade is ···
+💖 my github grade is ···
 
 [![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=lasilla20)](https://github.com/anuraghazra/github-readme-stats)
 

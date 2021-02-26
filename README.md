@@ -2,7 +2,7 @@
 ![header](https://capsule-render.vercel.app/api?text=%Hi,%There!👋&type=shark&height=180&animation=fadeIn&fontSize=40&fontAlignY=30)
 <p align="center"></p>
 
-
+<div align=center>
 
 
 📝 **The language I can use is ···**

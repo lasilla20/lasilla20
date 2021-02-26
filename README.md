@@ -39,7 +39,7 @@
 [![Gmail Badge](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white&link=mailto:lasilla2096@gmail.com)](mailto:lasilla2096@gmail.com)
 
 
-
+<br><br>
 [![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=lasilla20)](https://github.com/anuraghazra/github-readme-stats)
 
 <!--

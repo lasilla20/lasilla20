@@ -21,8 +21,8 @@
 🔥 **I'm working on ···**
 | Date | Stutdy name |
 | ---- | ---- |
-| 내용1입니다 | 내용2입니다 |
-| 2021-01-14 ~ | BOJ Algorythm  |
+| 2020-07 ~ 2020-12 | BOJ Algorythm problem Solving 1 |
+| 2021-01-14 ~ | BOJ Algorythm problem Solving 2 |
 
 
 

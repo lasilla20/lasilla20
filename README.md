@@ -24,8 +24,8 @@
 
 📬 **Other Contacts ···** 
 <img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white" />
-<img src="BadgeURLHere" />
-* [google mail](lasilla2096@gmail.com)
+<img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
+
 
 ##
 <!--

@@ -9,7 +9,7 @@ WELECOME TO ``정차미``'s GITHUB PAGE!👋
 🔥 **I'm working on ···**
 
 📬 **Other Contacts ···** 
-[gmail](lasilla2096@gmail.com)
+* [gmail](lasilla2096@gmail.com)
 
 ##
 <!--

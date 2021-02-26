@@ -1,5 +1,10 @@
 ### Hi there 👋
-
+@font-face {
+    font-family: 'SDSamliphopangche_Outline';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 남들깃허브할때 쫌 많이 놀앗긴 하지만 꾸미는거하나는 기가막히게잘합니다. 기다려보슈
 3/5까지 깃허브메인채웁시다^^허허
 마크다운문법~

@@ -1,7 +1,8 @@
-``정차미``의 깃허브에 어서오세요!
+WELECOME TO ``정차미``'s GITHUB PAGE!
 ======
 
 
+my
 [![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=lasilla20)](https://github.com/anuraghazra/github-readme-stats)
 
 

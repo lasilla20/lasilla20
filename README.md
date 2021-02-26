@@ -1,5 +1,5 @@
 
-![header](https://capsule-render.vercel.app/api?type=shark&height=400&text=WELECOME%TO%CHAMI's%GITHUB%PAGE!👋&animation=fadeIn&fontSize=40&fontAlignY=80)
+![header](https://capsule-render.vercel.app/api?type=shark&height=300&text=WELECOME%TO%CHAMI's%GITHUB%PAGE!👋&animation=fadeIn&fontSize=40)
 
 [![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=lasilla20)](https://github.com/anuraghazra/github-readme-stats)
 

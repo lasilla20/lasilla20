@@ -5,7 +5,7 @@
 <div align=center>
 
 
-📝 **The language I can use is ···**
+📝 **languages that I've used at least once ···**
 <br><br>
 <img src="https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white" />
 <img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white" />

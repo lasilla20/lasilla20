@@ -36,7 +36,7 @@
 <br><br>
 [![discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://imgur.com/di8cMub.png)
 [![Gmail Badge](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white&link=mailto:lasilla2096@gmail.com)](mailto:lasilla2096@gmail.com)
-<a href="https://imgur.com/di8cMub.png" target="_blank"><img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white&link=https://imgur.com/di8cMub.png" />
+<a href="https://imgur.com/di8cMub.png target=_blank"><img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white&link=https://imgur.com/di8cMub.png" />
 
 [![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=lasilla20)](https://github.com/anuraghazra/github-readme-stats)
 

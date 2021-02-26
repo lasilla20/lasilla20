@@ -4,7 +4,6 @@
 
 
 
-[![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=lasilla20)](https://github.com/anuraghazra/github-readme-stats)
 
 📝 **The language I can use is ···**
 <br><br>
@@ -33,7 +32,9 @@
 <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
 
 
-##
+
+[![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=lasilla20)](https://github.com/anuraghazra/github-readme-stats)
+
 <!--
 **lasilla20/lasilla20** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 

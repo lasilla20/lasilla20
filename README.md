@@ -35,7 +35,7 @@
 
 📬 **Other Contacts ···** 
 <br><br>
-[![discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white){:target="_blank"}](https://imgur.com/di8cMub.png)
+[![discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)]((https://imgur.com/di8cMub.png){:target="_blank"})
 [![Gmail Badge](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white&link=mailto:lasilla2096@gmail.com){:target="_blank"}](mailto:lasilla2096@gmail.com)
 
 [![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=lasilla20)](https://github.com/anuraghazra/github-readme-stats)

@@ -22,11 +22,11 @@
 
 
 🔥 **I'm working on ···**
-| Date | Stutdy name |
-| --- | --- |
-| 2020-07 ~ 2020-12 | BOJ Algorythm problem Solving 1 |
-| 2021-01-14 ~ | BOJ Algorythm problem Solving 2 |
-| 2021-02-25 ~ | Inflearn React |
+| Date | Stutdy name | Link |
+| --- | --- | --- |
+| 2020-07 ~ 2020-12 | BOJ Algorythm problem Solving 1 | § |
+| 2021-01-14 ~ | BOJ Algorythm problem Solving 2 | § |
+| 2021-02-25 ~ | Inflearn React | § |
 
 
 

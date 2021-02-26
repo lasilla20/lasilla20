@@ -17,7 +17,7 @@
 <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
 
 
-
+<br>
 🔥 **I'm working on ···**
 | Date | Stutdy name |
 | ---- | ---- |
@@ -25,7 +25,7 @@
 | 2021-01-14 ~ | BOJ Algorythm problem Solving 2 |
 
 
-
+<br>
 📬 **Other Contacts ···** 
 <br><br>
 <img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white" />

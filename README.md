@@ -1,5 +1,5 @@
 
-![header](https://capsule-render.vercel.app/api?text=%Hi, %there!👋&type=shark&height=180&animation=fadeIn&fontSize=40&fontAlignY=30)
+![header](https://capsule-render.vercel.app/api?text=%Hi,%there!👋%I'm정차미&type=shark&height=180&animation=fadeIn&fontSize=40&fontAlignY=30)
 
 [![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=lasilla20)](https://github.com/anuraghazra/github-readme-stats)
 

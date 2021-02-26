@@ -7,7 +7,7 @@
 [![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=lasilla20)](https://github.com/anuraghazra/github-readme-stats)
 
 📝 **The language I can use is ···**
-https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white
+[c](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)
 
 
 🔥 **I'm working on ···**

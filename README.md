@@ -24,7 +24,7 @@
 | Date | Study name | Link |
 | --- | --- | :---: |
 | 2020-07 ~ 2020-12 | BOJ Algorithm problem solving 1 | § |
-| 2021-01-14 ~ | BOJ Algorithm problem solving 2 | § |
+| 2021-01-14 ~ | BOJ Algorithm problem solving 2 | [§](https://github.com/hyeji1221/SMU_Algorithm.git) |
 | 2021-02-25 ~ | Inflearn React | § |
 
 

@@ -1,11 +1,35 @@
-<mxfile host="app.diagrams.net" modified="2022-04-15T09:25:46.234Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36" etag="HDru7R4KnGSqefYVBEbw" version="17.4.4" type="github">
+<mxfile host="app.diagrams.net" modified="2022-04-15T09:35:55.153Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36" etag="tlXc0UoI3AxfknnXLN5u" version="17.4.4" type="github">
   <diagram id="knMXWCGG6_-gHdy01Hyh" name="Page-1">
-    <mxGraphModel dx="976" dy="619" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="480" dy="617" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="GIMM10E1bogJqhe_hlqj-3" value="의류 어플리케이션" style="swimlane;" vertex="1" parent="1">
-          <mxGeometry x="310" y="230" width="200" height="200" as="geometry" />
+          <mxGeometry x="310" y="80" width="460" height="470" as="geometry" />
+        </mxCell>
+        <mxCell id="GIMM10E1bogJqhe_hlqj-4" value="로그인을 한다" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="GIMM10E1bogJqhe_hlqj-3">
+          <mxGeometry x="20" y="60" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="GIMM10E1bogJqhe_hlqj-6" value="회원 가입을 한다" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="GIMM10E1bogJqhe_hlqj-3">
+          <mxGeometry x="20" y="140" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="GIMM10E1bogJqhe_hlqj-7" value="사용자 정보를 찾는다" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="GIMM10E1bogJqhe_hlqj-3">
+          <mxGeometry x="20" y="220" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="GIMM10E1bogJqhe_hlqj-8" value="메인 홈으로 접속한다" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="GIMM10E1bogJqhe_hlqj-3">
+          <mxGeometry x="180" y="140" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="GIMM10E1bogJqhe_hlqj-9" value="관리자 모드로&lt;br&gt;전환한다" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="GIMM10E1bogJqhe_hlqj-3">
+          <mxGeometry x="320" y="140" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="GIMM10E1bogJqhe_hlqj-10" value="게시글을 작성한다" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="GIMM10E1bogJqhe_hlqj-3">
+          <mxGeometry x="320" y="230" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="GIMM10E1bogJqhe_hlqj-11" value="카테고리 별로&lt;br&gt;게시글을 확인한다" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="GIMM10E1bogJqhe_hlqj-3">
+          <mxGeometry x="180" y="280" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="GIMM10E1bogJqhe_hlqj-12" value="달ㄹ 별로&lt;br&gt;게시글을 확인하다" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="GIMM10E1bogJqhe_hlqj-3">
+          <mxGeometry x="180" y="360" width="120" height="50" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

@@ -83,6 +83,21 @@ TX와 RX의 번호를 입력해줍니다. 이때, src 노드의 ID 가 1이고, 
 ```
 arqLLI_initLowLayer 라는 함수를 호출합니다. 이 함수는 ARO_LLinterface.h 파일에 존재합니다. 시스템 콜인 attach 함수로 arqMain_processInputWord의 주소와 Rx를 넣어줍니다.
 
+<br>
+<br>
+<br>
+- ARQ_LLinterface
+- - arqLLI_initLowLayer
+```cpp
+void arqLLI_initLowLayer(uint8_t srcId)
+{
+    phymac_init(srcId, arqLLI_dataCnfFunc, arqLLI_dataIndFunc);
+}
+```
+phymac_init 함수는 PHYMAC_layer.h에 정의되어 있습니다.
+
+- 
+
 - - arqMain_processInputWord(void)
 ```cpp
 void arqMain_processInputWord(void)
@@ -129,7 +144,7 @@ event만큼 16비트로 1을 왼쪽으로 shift합니다. 이 값을 eventFlag�
 ```
 아닐 경우에는 문자열을 계속 입력받습니다. 문자열의 크기가 배열의 범위를 초과했을 경우 (오버 플로우 발생) 입력을 강제적으로 마친 후 결과값을 출력해줍니다.
 
-- ARQ_LLinterface
+
 
 
 ```cpp

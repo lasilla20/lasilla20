@@ -94,6 +94,15 @@ void arqMain_processInputWord(void)
 ```
 Main state와 MAINSTATE_IDLE 이 동일하고 (둘다 초기에 0으로 초기화, 프로토콜 상태가 같다는 것을 의미) 데이터를 보내야하는 이벤트를 통해 Flag를 체크했을 때 이 값이 0이 되면 조건문이 실행됩니다. (앞에 NOT이 붙었으므로)
 
+- ARQ_FSMevent
+```cpp
+int arqEvent_checkEventFlag(arqEvent_e event)
+{
+    return (eventFlag & (0x01 << event));
+}
+```
+event만큼 16비트로 1을 왼쪽으로 shift합니다. 이 값을 eventFlag와 AND 연산시켜 리턴해줍니다.
+
 ```cpp
         if (c == '\n' || c == '\r')
         {

@@ -94,9 +94,26 @@ void arqLLI_initLowLayer(uint8_t srcId)
     phymac_init(srcId, arqLLI_dataCnfFunc, arqLLI_dataIndFunc);
 }
 ```
-phymac_init 함수는 PHYMAC_layer.h에 정의되어 있습니다.
+phymac_init 함수는 PHYMAC_layer.h에 정의되어 있습니다. 또한 같은 ARQ_LLinterface 안에서 다른 함수를 호출합니다.
 
-- 
+- PHYMAC_layer.h
+```cpp
+#define PHYMAC_STATE_RX             0
+#define PHYMAC_STATE_TX             1
+
+#define PHYMAC_ERR_NONE             0
+#define PHYMAC_ERR_WRONGSTATE       1
+#define PHYMAC_ERR_HWERROR          2
+#define PHYMAC_ERR_SIZE             3
+
+
+
+int phymac_dataReq(uint8_t* dataPtr, uint8_t size, uint8_t destId);
+void phymac_init(uint8_t id, void (*dataCnfFunc)(int), void (*dataIndFunc)(uint8_t, uint8_t*, uint8_t));
+
+```
+
+
 
 - - arqMain_processInputWord(void)
 ```cpp

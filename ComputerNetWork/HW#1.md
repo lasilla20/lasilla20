@@ -63,7 +63,7 @@ int main(void){
     pc.printf("------------------ ARQ protocol starts! --------------------------\n");
     arqEvent_clearAllEventFlag();
 ```
-시작하기에 앞서 이벤트 Flag를 초기화합니다.
+시작하기에 앞서 이벤트 Flag를 초기화합니다. (eventFlag = 0;)
 
 ```cpp
     //source & destination ID setting
@@ -83,7 +83,44 @@ TX와 RX의 번호를 입력해줍니다. 이때, src 노드의 ID 가 1이고, 
 ```
 arqLLI_initLowLayer 라는 함수를 호출합니다. 이 함수는 ARO_LLinterface.h 파일에 존재합니다. 시스템 콜인 attach 함수로 arqMain_processInputWord의 주소와 Rx를 넣어줍니다.
 
+- - arqMain_processInputWord(void)
+```cpp
+void arqMain_processInputWord(void)
+{
+    char c = pc.getc();
+    if (main_state == MAINSTATE_IDLE &&
+        !arqEvent_checkEventFlag(arqEvent_dataToSend))
+    {
+```
+Main state와 MAINSTATE_IDLE 이 동일하고 (둘다 초기에 0으로 초기화, 프로토콜 상태가 같다는 것을 의미) 데이터를 보내야하는 이벤트를 통해 Flag를 체크했을 때 이 값이 0이 되면 조건문이 실행됩니다. (앞에 NOT이 붙었으므로)
 
+```cpp
+        if (c == '\n' || c == '\r')
+        {
+            originalWord[wordLen++] = '\0';
+            arqEvent_setEventFlag(arqEvent_dataToSend);
+            pc.printf("word is ready! ::: %s\n", originalWord);
+        }
+```
+입력받은 문자열이 ‘다음줄’ 혹은 ‘맨앞으로’였을 때 입력이 종료되었으므로 조건문이 실행됩니다. 문자열 가장 마지막에 NULL을 추가해줍니다. 입력 받은 문자열(originalWord)을 출력합니다.
+
+```cpp
+        else
+        {
+            originalWord[wordLen++] = c;
+            if (wordLen >= ARQMSG_MAXDATASIZE-1)
+            {
+                originalWord[wordLen++] = '\0';
+                arqEvent_setEventFlag(arqEvent_dataToSend);
+                pc.printf("\n max reached! word forced to be ready :::: %s\n", originalWord);
+            }
+        }
+    }
+}
+```
+아닐 경우에는 문자열을 계속 입력받습니다. 문자열의 크기가 배열의 범위를 초과했을 경우 (오버 플로우 발생) 입력을 강제적으로 마친 후 결과값을 출력해줍니다.
+
+- ARQ_LLinterface
 
 
 ```cpp

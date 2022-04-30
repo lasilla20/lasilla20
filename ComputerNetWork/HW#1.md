@@ -52,7 +52,7 @@ uint8_t arqAck[5];      //ARQ ACK PDU
 
 초기 설정을 위해 다른 파일을 include하고 변수를 지정합니다.
 
-- - 메인 함수를 살펴봅니다.
+- - 메인 함수를 살펴봅니다. (main(void))
 ```cpp
 //FSM operation implementation ------------------------------------------------
 int main(void){

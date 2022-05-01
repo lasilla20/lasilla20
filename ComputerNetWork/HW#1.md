@@ -202,6 +202,7 @@ void arqLLI_sendData(uint8_t* msg, uint8_t size, uint8_t dest)
 }
 
 ```
+메세지의 내용과 사이즈, 목적지를 맥 레이어에 넣어주며 메세지를 통해 Tx 타입을 설정해줍니다.
 
 ```cpp
 
@@ -213,6 +214,10 @@ void arqLLI_sendData(uint8_t* msg, uint8_t size, uint8_t dest)
                     wordLen = 0;
                     arqEvent_clearEventFlag(arqEvent_dataToSend);
                 }
+```
+사용자에게 전송 상태를 보여줍니다. 목적지 Rx의 ID와 송수신 순서를 출력합니다. 단어의 길이를 0으로 초기화시키고 나면 아래 과정은 메세지를 수신 받았을 때와 똑같습니다.
+
+```cpp
                 else if (flag_needPrint == 1)
                 {
                     pc.printf("Give a word to send : ");

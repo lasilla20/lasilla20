@@ -85,7 +85,8 @@ arqLLI_initLowLayer 라는 함수를 호출합니다. 이 함수는 ARO_LLinterf
 
 <br>
 <br>
-<br>
+--
+
 - ARQ_LLinterface
 - - arqLLI_initLowLayer
 ```cpp
@@ -96,23 +97,42 @@ void arqLLI_initLowLayer(uint8_t srcId)
 ```
 phymac_init 함수는 PHYMAC_layer.h에 정의되어 있습니다. 또한 같은 ARQ_LLinterface 안에서 다른 함수를 호출합니다.
 
-- PHYMAC_layer.h
+- - arqLLI_dataCnfFunc()
 ```cpp
-#define PHYMAC_STATE_RX             0
-#define PHYMAC_STATE_TX             1
+void arqLLI_dataCnfFunc(int err) 
+{
+    if (txType == ARQMSG_TYPE_DATA)
+    {
+        arqEvent_setEventFlag(arqEvent_dataTxDone);
+    }
+    else if (txType == ARQMSG_TYPE_ACK)
+    {
+        arqEvent_setEventFlag(arqEvent_ackTxDone);
+    }
+}
+```만약 ARQMSG_TYPE_DATA의 값이 txType와 같다면, 이벤트 Flag를 arqEvent_dataTxDone로 set 해주고, 만약 ARQMSG_TYPE_ACK의 값이 txType과 같다면, 이벤트 Flag를 arqEvent_ackTxDone로 set 해줍니다.
 
-#define PHYMAC_ERR_NONE             0
-#define PHYMAC_ERR_WRONGSTATE       1
-#define PHYMAC_ERR_HWERROR          2
-#define PHYMAC_ERR_SIZE             3
+- - arqLLI_dataIndFunc()
+```cpp
+void arqLLI_dataIndFunc(uint8_t srcId, uint8_t* dataPtr, uint8_t size)
+{
+    debug_if(DBGMSG_ARQ, "\n --> DATA IND : src:%i, size:%i\n", srcId, size);
 
+    memcpy(rcvdData, dataPtr, size*sizeof(uint8_t));
+    rcvdSrc = srcId;
+    rcvdSize = size;
 
-
-int phymac_dataReq(uint8_t* dataPtr, uint8_t size, uint8_t destId);
-void phymac_init(uint8_t id, void (*dataCnfFunc)(int), void (*dataIndFunc)(uint8_t, uint8_t*, uint8_t));
-
+    //ready for ACK TX
+    if (arqMsg_checkIfData(dataPtr))
+    {
+        arqEvent_setEventFlag(arqEvent_dataRcvd);
+    }
+    else if (arqMsg_checkIfAck(dataPtr))
+    {
+        arqEvent_setEventFlag(arqEvent_ackRcvd);
+    }
+}
 ```
-
 
 
 - - arqMain_processInputWord(void)

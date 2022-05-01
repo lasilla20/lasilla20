@@ -85,7 +85,6 @@ arqLLI_initLowLayer 라는 함수를 호출합니다. 이 함수는 ARO_LLinterf
 
 <br>
 <br>
---
 
 - ARQ_LLinterface
 - - arqLLI_initLowLayer
@@ -133,7 +132,7 @@ void arqLLI_dataIndFunc(uint8_t srcId, uint8_t* dataPtr, uint8_t size)
     }
 }
 ```
-
+모르겠어서 잠깐 패스
 
 - - arqMain_processInputWord(void)
 ```cpp

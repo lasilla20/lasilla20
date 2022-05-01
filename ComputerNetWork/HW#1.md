@@ -181,7 +181,7 @@ IDLE 상태일 때 데이터를 수신 받으면, 정보를 각각 변수에 저
 
                     arqEvent_clearEventFlag(arqEvent_dataRcvd);
                 }
-```cpp
+```
 입력 받은 정보를 출력해줍니다. 다른 노드의 ID(1 또는 2), 데이터의 내용(hello), 데이터의 사이즈, 송수신 순서를 차례대로 보여줍니다. 메인 상태를 업데이트한 뒤 Flag를 초기화해줍니다.
 
 ```cpp          

@@ -225,7 +225,9 @@ void arqLLI_sendData(uint8_t* msg, uint8_t size, uint8_t dest)
                 }     
 
                 break;
-
+```
+한 동작이 끝나고 나면 위의 문장을 출력한 후에 flag_needPrint를 다시 초기화시켜줍니다.
+```cpp
             case MAINSTATE_TX: //IDLE state description
 
                 if (arqEvent_checkEventFlag(arqEvent_dataTxDone)) //data TX finished
@@ -242,3 +244,4 @@ void arqLLI_sendData(uint8_t* msg, uint8_t size, uint8_t dest)
     }
 }
 ```
+TX 상태일 때는 데이터 송수진이 종료된 것으로 확인하고 메인 상태와 Flag를 초기화시켜줍니다.

@@ -109,7 +109,8 @@ void arqLLI_dataCnfFunc(int err)
         arqEvent_setEventFlag(arqEvent_ackTxDone);
     }
 }
-```만약 ARQMSG_TYPE_DATA의 값이 txType와 같다면, 이벤트 Flag를 arqEvent_dataTxDone로 set 해주고, 만약 ARQMSG_TYPE_ACK의 값이 txType과 같다면, 이벤트 Flag를 arqEvent_ackTxDone로 set 해줍니다.
+```
+만약 ARQMSG_TYPE_DATA의 값이 txType와 같다면, 이벤트 Flag를 arqEvent_dataTxDone로 set 해주고, 만약 ARQMSG_TYPE_ACK의 값이 txType과 같다면, 이벤트 Flag를 arqEvent_ackTxDone로 set 해줍니다.
 
 - - arqLLI_dataIndFunc()
 ```cpp

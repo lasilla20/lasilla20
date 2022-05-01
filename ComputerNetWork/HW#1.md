@@ -1,5 +1,5 @@
 # 컴퓨터네크워크 실습1 결과 보고서
-### 201911011 컴퓨터과학과 1분반 정차미
+> 201911011 컴퓨터과학과 1분반 정차미
 <br>
 1. 결과 캡처 (내용은 자율)
 
@@ -96,46 +96,7 @@ void arqLLI_initLowLayer(uint8_t srcId)
 ```
 phymac_init 함수는 PHYMAC_layer.h에 정의되어 있습니다. 또한 같은 ARQ_LLinterface 안에서 다른 함수를 호출합니다.
 
-- - arqLLI_dataCnfFunc()
-```cpp
-void arqLLI_dataCnfFunc(int err) 
-{
-    if (txType == ARQMSG_TYPE_DATA)
-    {
-        arqEvent_setEventFlag(arqEvent_dataTxDone);
-    }
-    else if (txType == ARQMSG_TYPE_ACK)
-    {
-        arqEvent_setEventFlag(arqEvent_ackTxDone);
-    }
-}
-```
-만약 ARQMSG_TYPE_DATA의 값이 txType와 같다면, 이벤트 Flag를 arqEvent_dataTxDone로 set 해주고, 만약 ARQMSG_TYPE_ACK의 값이 txType과 같다면, 이벤트 Flag를 arqEvent_ackTxDone로 set 해줍니다.
-
-- - arqLLI_dataIndFunc()
-```cpp
-void arqLLI_dataIndFunc(uint8_t srcId, uint8_t* dataPtr, uint8_t size)
-{
-    debug_if(DBGMSG_ARQ, "\n --> DATA IND : src:%i, size:%i\n", srcId, size);
-
-    memcpy(rcvdData, dataPtr, size*sizeof(uint8_t));
-    rcvdSrc = srcId;
-    rcvdSize = size;
-
-    //ready for ACK TX
-    if (arqMsg_checkIfData(dataPtr))
-    {
-        arqEvent_setEventFlag(arqEvent_dataRcvd);
-    }
-    else if (arqMsg_checkIfAck(dataPtr))
-    {
-        arqEvent_setEventFlag(arqEvent_ackRcvd);
-    }
-}
-```
-모르겠어서 잠깐 패스
-
-- - arqMain_processInputWord(void)
+- - arqMain_processInputWord
 ```cpp
 void arqMain_processInputWord(void)
 {
@@ -181,9 +142,9 @@ event만큼 16비트로 1을 왼쪽으로 shift합니다. 이 값을 eventFlag�
 ```
 아닐 경우에는 문자열을 계속 입력받습니다. 문자열의 크기가 배열의 범위를 초과했을 경우 (오버 플로우 발생) 입력을 강제적으로 마친 후 결과값을 출력해줍니다.
 
+---
 
-
-
+- - 메인 함수의 반복문을 살펴봅니다.
 ```cpp
     while(1)
     {
@@ -194,7 +155,10 @@ event만큼 16비트로 1을 왼쪽으로 shift합니다. 이 값을 eventFlag�
             prev_state = main_state;
         }
 
+```
+현재 상태가 메인 상태와 같지 않다면, 디버그일 경우 에러가 났음을 알리고 현재 상태를 메인 상태와 같도록 동기화시켜줍니다. 
 
+```cpp
         //FSM should be implemented here! ---->>>>
         switch (main_state)
         {
@@ -206,20 +170,40 @@ event만큼 16비트로 1을 왼쪽으로 shift합니다. 이 값을 eventFlag�
                     uint8_t srcId = arqLLI_getSrcId();
                     uint8_t* dataPtr = arqLLI_getRcvdDataPtr();
                     uint8_t size = arqLLI_getSize();
+```
+IDLE 상태일 때 데이터를 수신 받으면, 정보를 각각 변수에 저장해줍니다. 
 
+```cpp
                     pc.printf("\n -------------------------------------------------\nRCVD from %i : %s (length:%i, seq:%i)\n -------------------------------------------------\n", 
                                 srcId, arqMsg_getWord(dataPtr), size, arqMsg_getSeq(dataPtr));
-
                     main_state = MAINSTATE_IDLE;
                     flag_needPrint = 1;
 
                     arqEvent_clearEventFlag(arqEvent_dataRcvd);
                 }
+```cpp
+입력 받은 정보를 출력해줍니다. 다른 노드의 ID(1 또는 2), 데이터의 내용(hello), 데이터의 사이즈, 송수신 순서를 차례대로 보여줍니다. 메인 상태를 업데이트한 뒤 Flag를 초기화해줍니다.
+
+```cpp          
                 else if (arqEvent_checkEventFlag(arqEvent_dataToSend)) //if data needs to be sent (keyboard input)
                 {
                     //msg header setting
                     pduSize = arqMsg_encodeData(arqPdu, originalWord, seqNum, wordLen);
                     arqLLI_sendData(arqPdu, pduSize, dest_ID);
+```
+IDLE 상태일 때 데이터를 송신할 거라면, 메세지의 헤더를 설정해줍니다. PDU의 사이즈를 넣어주고 arqLLI_sendData 함수를 호출하는데, 이 함수는 "ARQ_LLinterface.h" 파일에 있습니다.
+- - - arqLLI_sendData
+```cpp
+//TX function
+void arqLLI_sendData(uint8_t* msg, uint8_t size, uint8_t dest)
+{
+    phymac_dataReq(msg, size, dest);
+    txType = msg[ARQMSG_OFFSET_TYPE];
+}
+
+```
+
+```cpp
 
                     pc.printf("[MAIN] sending to %i (seq:%i)\n", dest_ID, (seqNum-1)%ARQMSSG_MAX_SEQNUM);
 

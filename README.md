@@ -27,6 +27,7 @@
 | 2021-01-14 ~ | BOJ Algorithm problem solving 2 | [§](https://github.com/hyeji1221/SMU_Algorithm.git) |
 | 2021-02-25 ~ 2021-03-29 | Inflearn React | [§](https://github.com/LAH1203/React-study.git) |
 | 2021-03-30 ~ | Boostcourse Web Backend (JavaSpring) | [§](https://github.com/LAH1203/Study_JavaSpring) |
+| 2022-03-02 ~ 2022-06-16 | 2022 SW Engineering Team Project | [§](https://github.com/JongdaeHan/SE2022_HAEA0008_3) |
 
 
 

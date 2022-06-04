@@ -14,7 +14,7 @@
 //삽입한 새로 if문 코드
 else if (arqEvent_checkEventFlag(arqEvent_arqTimeout)) //data TX finished
 {
-  if (retxCnt > ARQ_MAXRETRANSMISSION){ //타이머가 완료되어 타임아웃이 5번 발생하였을 때,
+  if (retxCnt > ARQ_MAXRETRANSMISSION){ //타이머가 만료되어 타임아웃이 5번 발생하였을 때,
   pc.printf("[WARNING] Failed to send data, max retx cnt reached\n"); //경고 메세지를 출력
   arqEvent_clearEventFlag(arqEvent_arqTimeout); //이벤트를 초기화 해준다
   main_state = MAINSTATE_IDLE; //메인 상태를 IDLE로 변경

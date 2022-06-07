@@ -97,7 +97,8 @@ void arqMain_processInputWord(void)
 ```
 여기서 사용자는 hello 를 입력할 것이므로 변수 originalWord는,
 
-originalWord = "hello/0" 입니다.
+originalWord = "hello\0" 입니다.
+
 
 
 - **Step 2.** 메세지 전송하기
@@ -110,11 +111,78 @@ originalWord = "hello/0" 입니다.
             prev_state = main_state;
         }
 ```
-맨 처음 시작 시, prev_state가 0으로 초기화되어 있으므로 protocal을 시작함을 알리면서 prev_state와 main_state를 동기화시키는 작업을 수행합니다. 메세지를 전송하기 위해 반복문 안에서 
+맨 처음 시작 시, prev_state가 0으로 초기화되어 있으므로 protocal을 시작함을 알리면서 prev_state와 main_state를 동기화시키는 작업을 수행합니다. IDLE 상태로 정상 작동 중이니 prev_state 또한 IDLE 상태가 됩니다. 메세지를 전송하기 위해 반복문 안에서 
 
-`case MAINSTATE_IDLE → else if arqEvent_checkEventFlag(arqEvent_dataToSend))`
+`case MAINSTATE_IDLE` → `else if arqEvent_checkEventFlag(arqEvent_dataToSend))`
+
 으로 넘어옵니다.
 
 ```cpp
+else if (arqEvent_checkEventFlag(arqEvent_dataToSend)) //if data needs to be sent (keyboard input)
+{ //msg header setting
+  //보낼 메세지를 encoding 합니다.
+  pduSize = arqMsg_encodeData(arqPdu, originalWord, seqNum, wordLen);
+  //dest_ID(2)로 메세지를 전송합시다.
+  arqLLI_sendData(arqPdu, pduSize, dest_ID);
+  
+  //Setting ARQ parameter 
+  seqNum = (seqNum + 1)%ARQMSSG_MAX_SEQNUM;
+  retxCnt = 0;
+  //메세지 출력 문구 (2에게 보내는 시간을 알림)
+  pc.printf("[MAIN] sending to %i (seq:%i)\n", dest_ID, (seqNum-1)%ARQMSSG_MAX_SEQNUM);
+  //main 상태를 TX로 변경
+  main_state = MAINSTATE_TX;
+  flag_needPrint = 1;
 
+  wordLen = 0;
+  arqEvent_clearEventFlag(arqEvent_dataToSend);
+  }
+  
 ```
+아직까진 RX가 연결되지 않아도 프로토콜이 원활하게 수행됩니다. 메인 상태가 TX로 변경되었으므로 case IDLE을 빠져나와
+
+`case MAINSTATE_TX` → `else if (arqEvent_checkEventFlag(arqEvent_dataTxDone))`
+
+로 이동합니다.
+
+```cpp
+else if (arqEvent_checkEventFlag(arqEvent_dataTxDone)) //data TX finished
+{ //ACK으로 메인 상태를 바꾸고 타이머 시작
+  main_state = MAINSTATE_ACK;
+  arqTimer_startTimer(); //start ARQ timer for retransmission
+  
+  arqEvent_clearEventFlag(arqEvent_dataTxDone);
+  }
+```
+
+src 에서는 메세지 전송이 완료되었으나 dest 노드에서 이를 받지 못해 src 또한 ACK를 받지 못하고, 타이머가 만료되고 맙니다. 첫 번째 타임 아웃 이벤트가 발생하였습니다.
+
+`case MAINSTATE_ACK` → `else if (arqEvent_checkEventFlag(arqEvent_arqTimeout))`
+
+으로 이동하여 dest 노드가 패킷을 받지 못하고 타이머가 만료되었을 시 어떠한 동작이 수행되는지 살펴봅니다.
+
+``cpp
+else if (arqEvent_checkEventFlag(arqEvent_arqTimeout)) //data TX finished
+{ //실습으로 넣은 코드
+  //ARQ_MAXRETRANSMISSION = 4; 이므로 타임 아웃이 5번 발생하면
+  if (retxCnt > ARQ_MAXRETRANSMISSION){
+  //최대 전송 횟수에 도달하여 데이터 전송에 실패하였음을 알린다.
+  pc.printf("[WARNING] Failed to send data, max retx cnt reached\n");
+  //이벤트를 초기화, 메인 상태를 IDLE로 변경, 타임 아웃 카운터 retxCnt를 초기화
+  arqEvent_clearEventFlag(arqEvent_arqTimeout);
+  main_state = MAINSTATE_IDLE;
+  retxCnt = 0;
+  break;
+  }
+  
+  //타임 아웃이 일어났다는 걸 출력하고 retransmission을 수행
+  pc.printf("timeout! retransmit\n");
+  //다시 데이터를 전송한다.
+  arqLLI_sendData(arqPdu, pduSize, dest_ID);
+  //Setting ARQ parameter
+  //전송 횟수(타임 아웃 카운터) 갱신, 메인 상태를 TX로 변경, 이벤트를 초기화
+  retxCnt += 1;
+  main_state = MAINSTATE_TX;
+  arqEvent_clearEventFlag(arqEvent_arqTimeout);
+}
+``

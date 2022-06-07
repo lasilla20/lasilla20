@@ -250,7 +250,8 @@ case MAINSTATE_ACK: //ACK state description
     }
     else
     { //아니라면 잘못된 ACK를 수신받았다고 알린다.
-      pc.printf("ACK seq number is weird! (expected : %i, received : %i\n", arqMsg_getSeq(arqPdu),arqMsg_getSeq(dataPtr));
+      pc.printf("ACK seq number is weird! (expected : %i, received : %i\n", arqMsg_getSeq(arqPdu),arqMsg_getSeq
+      (dataPtr));
     }
 ```
 패킷을 정상적으로 전송하여서 ACK를 수신 받았다는 것을 사용자에게 보여줍니다. 메인 상태를 IDLE로 바꾸어 일련의 동작을 마칩니다. 모든 동작이 끝났습니다!

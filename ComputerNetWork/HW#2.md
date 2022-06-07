@@ -249,4 +249,13 @@ case MAINSTATE_ACK: //ACK state description
 ```
 패킷을 정상적으로 전송하여서 ACK를 수신 받았다는 것을 사용자에게 보여줍니다. 메인 상태를 IDLE로 바꾸어 일련의 동작을 마칩니다. 모든 동작이 끝났습니다!
 
+<br>
+<br>
+
+3. Flowchart
+- 전체 Flowchart
+![pic](https://imgur.com/p31jT88.jpg)
+
+- 송신 src 쪽 Flowchart
+
 

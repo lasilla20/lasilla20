@@ -99,7 +99,7 @@ void arqMain_processInputWord(void)
 
 originalWord = "hello\0" 입니다.
 
-
+<br>
 
 - **Step 2.** 메세지 전송하기
 
@@ -161,7 +161,12 @@ src 에서는 메세지 전송이 완료되었으나 dest 노드에서 이를 �
 
 으로 이동하여 dest 노드가 패킷을 받지 못하고 타이머가 만료되었을 시 어떠한 동작이 수행되는지 살펴봅니다.
 
-``cpp
+<br>
+<br>
+
+- **Step 3.** 메세지 전송 실패
+
+```cpp
 else if (arqEvent_checkEventFlag(arqEvent_arqTimeout)) //data TX finished
 { //실습으로 넣은 코드
   //ARQ_MAXRETRANSMISSION = 4; 이므로 타임 아웃이 5번 발생하면
@@ -185,4 +190,18 @@ else if (arqEvent_checkEventFlag(arqEvent_arqTimeout)) //data TX finished
   main_state = MAINSTATE_TX;
   arqEvent_clearEventFlag(arqEvent_arqTimeout);
 }
-``
+```
+아직 첫 번째 타임 아웃이 발생한 것이기 때문에 상단의 if문은 실행되지 않습니다. *timeout! retransmit* 이 1번 출력되고 메인 상태가 TX로 변경되어 다시 `MAINSTATE_TX`로 돌아갑니다.
+
+`case MAINSTATE_TX` → `if (arqEvent_checkEventFlag(arqEvent_dataTxDone))`
+
+타이머를 다시 시작한 후에 ACK로 넘어가면 위의 과정을 반복하다, 세 번째 retransmission 에서 ACK를 수신받게 됩니다.
+
+<br>
+<br>
+
+- **Step 3.** 메세지 전송 완료
+- - src node의 경우
+
+
+- - dest node의 경우

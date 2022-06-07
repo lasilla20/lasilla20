@@ -88,7 +88,8 @@ void arqMain_processInputWord(void)
             {   //강제로 문자열 종료 후 경고문 출력한다.
                 originalWord[wordLen++] = '\0';
                 arqEvent_setEventFlag(arqEvent_dataToSend);
-                pc.printf("\n max reached! word forced to be ready :::: %s\n", originalWord);
+                pc.printf("\n max reached! word forced to be ready :::: %s\n", original
+                Word);
             }
         }
     }
@@ -107,7 +108,8 @@ originalWord = "hello\0" 입니다.
 ```cpp
         if (prev_state != main_state)
         {
-            debug_if(DBGMSG_ARQ, "[ARQ] State transition from %i to %i\n", prev_state, main_state);
+            debug_if(DBGMSG_ARQ, "[ARQ] State transition from %i to %i\n", prev_state,
+            main_state);
             prev_state = main_state;
         }
 ```
@@ -214,8 +216,12 @@ case MAINSTATE_IDLE: //IDLE state description
   uint8_t size = arqLLI_getSize();
 
   //전송 받은 데이터의 정보를 출력해줍니다.
-  pc.printf("\n -------------------------------------------------\nRCVD from %i : %s (length:%i, seq:%i)\n -------------------------------------------------\n", srcId, arqMsg_getWord(dataPtr), size, arqMsg_getSeq(dataPtr));
-  //정상적으로 패킷을 전송 받았으니, 이를 src 쪽에 알려주기 위해 데이터를 인코딩하여 ACK를 보내줍니다.
+  pc.printf("\n -------------------------------------------------
+  \nRCVD from %i : %s (length:%i, seq:%i)\n
+  -------------------------------------------------\n",
+  srcId, arqMsg_getWord(dataPtr), size, arqMsg_getSeq(dataPtr));
+  //정상적으로 패킷을 전송 받았으니, 이를 src 쪽에 알려주기 위해 데이터를 인코딩하여
+  //ACK를 보내줍니다.
   //ACK transmission
   arqMsg_encodeAck(arqAck, arqMsg_getSeq(dataPtr));
   arqLLI_sendData(arqAck, ARQMSG_ACKSIZE, srcId);

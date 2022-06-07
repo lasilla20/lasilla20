@@ -257,5 +257,4 @@ case MAINSTATE_ACK: //ACK state description
 ![pic](https://imgur.com/p31jT88.jpg)
 
 - 송신 src 쪽 Flowchart
-
-
+![pic](https://imgur.com/zED2RQC.jpg)

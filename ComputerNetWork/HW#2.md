@@ -35,7 +35,9 @@ else if (arqEvent_checkEventFlag(arqEvent_arqTimeout)) //data TX finished
   2. 동작 과정 설명
 
 > src에서 dest노드로 "hello" 라는 메시지를 보내는 경우 받는쪽에서 패킷을 2번 받지 못하여 retransmission 2번이 일어나 세번째 전송에 ack수신에 성공하는 경우 모든 동작에 대해서 설명하시오.
-> 
+
+
+
 - **Step 1.** TX와 RX 번호 입출력
 ```cpp
 pc.printf("------------------ ARQ protocol starts! --------------------------\n");
@@ -83,7 +85,7 @@ void arqMain_processInputWord(void)
             originalWord[wordLen++] = c;
             //입력 된 문자열이 배열 크기 초과
             if (wordLen >= ARQMSG_MAXDATASIZE-1)
-            {   //강제로 문자열 종료 후 경고문 출력
+            {   //강제로 문자열 종료 후 경고문 출력한다.
                 originalWord[wordLen++] = '\0';
                 arqEvent_setEventFlag(arqEvent_dataToSend);
                 pc.printf("\n max reached! word forced to be ready :::: %s\n", originalWord);
@@ -91,5 +93,28 @@ void arqMain_processInputWord(void)
         }
     }
 }
+
+```
+여기서 사용자는 hello 를 입력할 것이므로 변수 originalWord는,
+
+originalWord = "hello/0" 입니다.
+
+
+- **Step 2.** 메세지 전송하기
+
+아래 코드는 메인 함수의 while 무한 반복 내용입니다.
+```cpp
+        if (prev_state != main_state)
+        {
+            debug_if(DBGMSG_ARQ, "[ARQ] State transition from %i to %i\n", prev_state, main_state);
+            prev_state = main_state;
+        }
+```
+맨 처음 시작 시, prev_state가 0으로 초기화되어 있으므로 protocal을 시작함을 알리면서 prev_state와 main_state를 동기화시키는 작업을 수행합니다. 메세지를 전송하기 위해 반복문 안에서 
+
+`case MAINSTATE_IDLE → else if arqEvent_checkEventFlag(arqEvent_dataToSend))`
+으로 넘어옵니다.
+
+```cpp
 
 ```

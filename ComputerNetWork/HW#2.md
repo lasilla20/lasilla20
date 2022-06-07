@@ -201,7 +201,52 @@ else if (arqEvent_checkEventFlag(arqEvent_arqTimeout)) //data TX finished
 <br>
 
 - **Step 3.** 메세지 전송 완료
-- - src node의 경우
-
-
 - - dest node의 경우
+```cpp
+case MAINSTATE_IDLE: //IDLE state description
+  //패킷 수신 이벤트 발생              
+  if (arqEvent_checkEventFlag(arqEvent_dataRcvd)) //if data reception event happens
+  {
+  //Retrieving data info.
+  //전송 받은 데이터의 정보를 변수에 저장합니다.
+  uint8_t srcId = arqLLI_getSrcId();
+  uint8_t* dataPtr = arqLLI_getRcvdDataPtr();
+  uint8_t size = arqLLI_getSize();
+
+  //전송 받은 데이터의 정보를 출력해줍니다.
+  pc.printf("\n -------------------------------------------------\nRCVD from %i : %s (length:%i, seq:%i)\n -------------------------------------------------\n", srcId, arqMsg_getWord(dataPtr), size, arqMsg_getSeq(dataPtr));
+  //정상적으로 패킷을 전송 받았으니, 이를 src 쪽에 알려주기 위해 데이터를 인코딩하여 ACK를 보내줍니다.
+  //ACK transmission
+  arqMsg_encodeAck(arqAck, arqMsg_getSeq(dataPtr));
+  arqLLI_sendData(arqAck, ARQMSG_ACKSIZE, srcId);
+  
+  //메인 상태를 TX으로 변경, flag_needPrint 변수의 값 변경, 이벤트를 초기화
+  main_state = MAINSTATE_TX; //goto TX state
+  flag_needPrint = 1;
+
+  arqEvent_clearEventFlag(arqEvent_dataRcvd);
+}
+```
+RX가 TX의 두 번째 전송 후에 TX와 연결되었습니다. 따라서 TX의 세 번째 retransmission으로 데이터를 수신 받게 됩니다. 메인이 IDLE인 상태에서 데이터 수신 이벤트를 처리한 후 동작을 종료합니다.
+
+- - src node의 경우
+```cpp
+case MAINSTATE_ACK: //ACK state description
+  //ACK를 드디어 받았다!
+  if (arqEvent_checkEventFlag(arqEvent_ackRcvd)) //data TX finished
+  { //수신 쪽과 송신 쪽의 ACK의 시퀀스가 동일한지 확인해 보는 작업
+    uint8_t* dataPtr = arqLLI_getRcvdDataPtr();
+    if ( arqMsg_getSeq(arqPdu) == arqMsg_getSeq(dataPtr) )
+    { //ACK를 성공적으로 수신하였음을 출력, 타이머 종료, 메인 상태를 IDLE로 변경
+    pc.printf("ACK is correctly received! \n");
+    arqTimer_stopTimer();
+    main_state = MAINSTATE_IDLE;
+    }
+    else
+    { //아니라면 잘못된 ACK를 수신받았다고 알린다.
+      pc.printf("ACK seq number is weird! (expected : %i, received : %i\n", arqMsg_getSeq(arqPdu),arqMsg_getSeq(dataPtr));
+    }
+```
+패킷을 정상적으로 전송하여서 ACK를 수신 받았다는 것을 사용자에게 보여줍니다. 메인 상태를 IDLE로 바꾸어 일련의 동작을 마칩니다. 모든 동작이 끝났습니다!
+
+
